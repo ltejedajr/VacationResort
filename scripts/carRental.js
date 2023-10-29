@@ -17,7 +17,7 @@ function totalCostBtnClicked() {
     
     // pg. 3-7
     
-    const optionsPerDay = 0
+    let optionsPerDay = 0
     
     let tollTag = document.getElementById("tollTag").checked;
     if (tollTag) {
@@ -36,8 +36,8 @@ function totalCostBtnClicked() {
     
     // pg. 3-11
     
-    const noRadioBtn = document.getElementById("noRadioBtn");
-    const yesRadioBtn = document.getElementById("yesRadioBtn");
+    let noRadioBtn = document.getElementById("noRadioBtn");
+    let yesRadioBtn = document.getElementById("yesRadioBtn");
     
     let under25;
     if (noRadioBtn.checked) {
@@ -70,4 +70,3 @@ function totalCostBtnClicked() {
     document.getElementById('redCircle').style.display='block'; 
 
 }
-

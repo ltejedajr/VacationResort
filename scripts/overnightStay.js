@@ -69,9 +69,11 @@ function calculateCostClicked() {
 
     if (queenRoom.checked) {
         roomType = 'queenRoom';
-    } else if (kingRoom.checked) {
+    }
+    else if (kingRoom.checked) {
         roomType = 'kingRoom';
-    } else if (twoBdSuite.checked) {
+    } 
+    else if (twoBdSuite.checked) {
         roomType = 'twoBdSuite';
     }
 
