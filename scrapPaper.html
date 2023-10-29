@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Room Cost Estimator</title>
+    <script type="text/javascript">
+        function getRoomRate(checkInDate, roomType) {
+            // You can implement the logic here to determine the room rate based on the check-in date and room type.
+            // For now, we'll return a fixed rate for testing purposes.
+            return 150.00; // Default rate
+        }
+
+        function calculateCost() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const checkInDate = document.getElementById('checkInDate').value;
+            const numNights = parseInt(document.getElementById('numNights').value);
+            const roomType = document.querySelector('input[name="roomType"]:checked').value;
+            const numAdults = parseInt(document.getElementById('numAdults').value);
+            const numChildren = parseInt(document.getElementById('numChildren').value);
+            const discount = document.querySelector('input[name="discount"]:checked').value;
+
+            const roomRate = getRoomRate(checkInDate, roomType);
+
+            // Check if the room can accommodate the number of guests.
+            if (
+                (roomType === 'Queen' && numAdults + numChildren > 5) ||
+                (roomType === 'King' && numAdults + numChildren > 2) ||
+                (roomType === '2-Bedroom Suite' && numAdults + numChildren > 6)
+            ) {
+                const messageDiv = document.getElementById('messageDiv');
+                messageDiv.innerText = 'The room you selected will not hold your party';
+                return;
+            }
+
+            const originalRoomCost = roomRate * numNights;
+            let discountedRoomCost = originalRoomCost;
+            
+            if (discount === 'AAA' || discount === 'Senior') {
+                discountedRoomCost *= 0.9; // 10% discount
+            } else if (discount === 'Military') {
+                discountedRoomCost *= 0.8; // 20% discount
+            }
+
+            const tax = 0.12 * discountedRoomCost; // 12% tax
+            const totalCost = discountedRoomCost + tax;
+
+            // Display the results on the page.
+            const messageDiv = document.getElementById('messageDiv');
+            messageDiv.innerText = `Original Room Cost: $${originalRoomCost.toFixed(2)}\n
+            Discount: ${discount}\nDiscounted Room Cost: $${discountedRoomCost.toFixed(2)}\n
+            Tax: $${tax.toFixed(2)}\nTotal Cost: $${totalCost.toFixed(2)}`;
+
+            // Generate a confirmation number.
+            const checkInDateObj = new Date(checkInDate);
+            const month = checkInDateObj.getMonth() + 1;
+            const year = checkInDateObj.getFullYear();
+            const confirmationNumber = `${name.substr(0, 3)}-${month}${year}-${numNights}:${numAdults}:${numChildren}`;
+            document.getElementById('confirmationNumber').innerText = `Confirmation Number: ${confirmationNumber}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Hotel Room Cost Estimator</h1>
+    <label for="name">Name:</label>
+    <input type="text" id="name"><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="text" id="email"><br><br>
+    
+    <label for="checkInDate">Check-in Date:</label>
+    <input type="date" id="checkInDate"><br><br>
+    
+    <label for="numNights">Number of Nights (1-28):</label>
+    <input type="number" id="numNights" min="1" max="28"><br><br>
+    
+    <label>Room Type:</label><br>
+    <input type="radio" name="roomType" value="Queen" checked> Queen
+    <input type="radio" name="roomType" value="King"> King
+    <input type="radio" name="roomType" value="2-Bedroom Suite"> 2-Bedroom Suite<br><br>
+    
+    <label for="numAdults">Number of Adults (1-4):</label>
+    <input type="number" id="numAdults" min="1" max="4"><br><br>
+    
+    <label for="numChildren">Number of Children (0-4):</label>
+    <input type="number" id="numChildren" min="0" max="4"><br><br>
+    
+    <label>Discount:</label><br>
+    <input type="radio" name="discount" value="None" checked> None
+    <input type="radio" name="discount" value="AAA/Senior"> AAA/Senior (10%)
+    <input type="radio" name="discount" value="Military"> Military (20%)<br><br>
+    
+    <button onclick="calculateCost()">Estimate Stay Cost</button>
+    
+    <p id="messageDiv"></p>
+    <p id="confirmationNumber"></p>
+</body>
+</html>
