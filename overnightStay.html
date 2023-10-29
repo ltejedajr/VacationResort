@@ -1,50 +1,90 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Hotel Room Cost Estimator</title>
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Hotel Room Cost Estimator</title>
-</head>
-<body>
-    <h1>Hotel Room Cost Estimator</h1>
-    <label for="inputName">Name:</label>
-    <input type="text" id="inputName" required><br><br>
-    
-    <label for="inputEmail">Email:</label>
-    <input type="text" id="inputEmail" required><br><br>
-    
-    <label for="checkInDate">Check-in Date:</label>
-    <input type="date" id="checkInDate"><br><br>
-    
-    <label for="inputNumNights">Number of Nights (1-28):</label>
-    <input type="number" id="inputNumNights" min="1" max="28" required><br><br>
-    
-    <label>Room Type:</label><br>
-    <input type="radio" id="queenRoomRadio" name="roomType" value="Queen" checked> Queen
-    <input type="radio" id="kingRoomRadio" name="roomType" value="King"> King
-    <input type="radio" id="twoBdSuiteRadio" name="roomType" value="2-Bedroom Suite"> 2-Bedroom Suite<br><br>
-    
-    <label for="inputNumAdults">Number of Adults (1-4):</label>
-    <input type="number" id="inputNumAdults" min="1" max="4" required><br><br>
-    
-    <label for="inputNumChildren">Number of Children (0-4):</label>
-    <input type="number" id="inputNumChildren" min="0" max="4" required><br><br>
-    
-    <label>Discount:</label><br>
-    <input type="radio" id="noDiscount" name="discount" value="None" checked> None
-    <input type="radio" id="seniorDiscount" name="discount" value="AAA/Senior"> AAA/Senior (10%)
-    <input type="radio" id="militaryDiscount" name="discount" value="Military"> Military (20%)<br><br>
-    
-    <button type="button" id="calculateCost">Estimate Stay Cost</button>
-    
-    <h6>Standard Room Cost: </h6><h6 id="outputStandardTotalCost"></h6>
-    <h6>Applied Discount: </h6><h6 id="outputAppliedDiscount"></h6>
-    <h6>Tax: </h6><h6 id="outputTax"></h6>
-    <h6>Total Cost: </h6><h6 id="outputTotalCost"></h6>
+<!doctype html>
+<html lang="en">
 
-    <h6>Confirmation Number:</h6><h6 id="confirmationNumber"></h6>
-    <script src="scripts/overnightStay.js"></script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Oasis Resorts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">Oasis Resorts</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="overnightStay.html">Overnight Cost Estimator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+
+        <h1>Hotel Room Cost Estimator</h1>
+        <label for="inputName">Name:</label>
+        <input type="text" id="inputName" required><br><br>
+
+        <label for="inputEmail">Email:</label>
+        <input type="text" id="inputEmail" required><br><br>
+
+        <label for="checkInDate">Check-in Date:</label>
+        <input type="date" id="checkInDate"><br><br>
+
+        <label for="inputNumNights">Number of Nights (1-28):</label>
+        <input type="number" id="inputNumNights" min="1" max="28" required><br><br>
+
+        <label>Room Type:</label><br>
+        <input type="radio" id="queenRoomRadio" name="roomType" value="Queen" checked> Queen
+        <input type="radio" id="kingRoomRadio" name="roomType" value="King"> King
+        <input type="radio" id="twoBdSuiteRadio" name="roomType" value="2-Bedroom Suite"> 2-Bedroom Suite<br><br>
+
+        <label for="inputNumAdults">Number of Adults (1-4):</label>
+        <input type="number" id="inputNumAdults" min="1" max="4" required><br><br>
+
+        <label for="inputNumChildren">Number of Children (0-4):</label>
+        <input type="number" id="inputNumChildren" min="0" max="4" required><br><br>
+
+        <label>Discount:</label><br>
+        <input type="radio" id="noDiscount" name="discount" value="None" checked> None
+        <input type="radio" id="seniorDiscount" name="discount" value="AAA/Senior"> AAA/Senior (10%)
+        <input type="radio" id="militaryDiscount" name="discount" value="Military"> Military (20%)<br><br>
+
+        <button type="button" id="calculateCost">Estimate Stay Cost</button>
+
+        <h6>Standard Room Cost: </h6>
+        <h6 id="outputStandardTotalCost"></h6>
+        <h6>Applied Discount: </h6>
+        <h6 id="outputAppliedDiscount"></h6>
+        <h6>Tax: </h6>
+        <h6 id="outputTax"></h6>
+        <h6>Total Cost: </h6>
+        <h6 id="outputTotalCost"></h6>
+
+        <h6>Confirmation Number:</h6>
+        <h6 id="confirmationNumber"></h6>
+        <script src="scripts/overnightStay.js"></script>
+    </main>
 </body>
+
 </html>
