@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 window.onload = init;
 
 
@@ -31,6 +29,15 @@ function getRoomRate(checkInDate, roomType) {
     return roomRates[roomType][season];
 }
 
+function showAlert() {
+    let queenRoomOccupancy = 'Max Occupancy: 5';
+    let kingRoomOccupancy = 'Mac Occupancy: 2';
+    let twoBdSuite = 'Max Occupancy: 6';
+    alert (queenRoomOccupancy);
+    alert (kingRoomOccupancy);
+    alert (twoBdSuiteOccupancy);
+  } 
+
 function calculateCostClicked() {
 // Initial Intake
     const inputName = document.getElementById('inputName').value;
@@ -47,18 +54,15 @@ function calculateCostClicked() {
 
     if (roomType == 'queenRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 5) { 
-            alert('Max Occupancy: 5');
-            return;
+            return alert(queenRoomOccupancy);
         }
     } else if (roomType == 'kingRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 2) { 
-            alert('Max Occupancy: 2');
-            return; 
+            return alert(kingRoomOccupancy);
         }
     } else if (roomType == 'twoBdSuite') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 6) {
-            alert('Max Occupancy: 6');
-            return;
+            return alert(twoBdSuiteOccupancy);
         }
     }
    
