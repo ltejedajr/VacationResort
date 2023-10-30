@@ -54,15 +54,15 @@ function calculateCostClicked() {
 
     if (roomType == 'queenRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 5) { 
-            return alert(queenRoomOccupancy);
+            return showAlert(queenRoomOccupancy);
         }
     } else if (roomType == 'kingRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 2) { 
-            return alert(kingRoomOccupancy);
+            return showAlert(kingRoomOccupancy);
         }
     } else if (roomType == 'twoBdSuite') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 6) {
-            return alert(twoBdSuiteOccupancy);
+            return showAlert(twoBdSuiteOccupancy);
         }
     }
    
