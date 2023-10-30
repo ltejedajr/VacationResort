@@ -84,9 +84,10 @@ label {
             <h1 style="text-align: center; font-style: italic; margin-bottom: 20px;">ACME</h1><br>
             <img src="images/blueSedanCarRental.png" width="125" height="125" id="blueSedanCarRental">
             <h1 style="text-align: center; font-style: italic; margin-top: 10px">Car Rentals</h1><hr>
-            
-            <div style="columns: 3;">
-            
+
+            <div class="container text-center">
+              <div class="row align-items-start">
+                <div class="col">
 
             <label class="form-label" for="inputPickupDate">Pickup date: </label>
             <input class="form-label" id="inputPickupDate" type="date"><br>
@@ -94,7 +95,9 @@ label {
             <label class="form-label" for="inputNumOfDays">Number of days: </label>
             <input class="form-label" id="inputNumOfDays" type="text"><br><br>
 
-            
+            </div>
+
+            <div class="col">
             <label for="options" style="font-weight: bold;">Options</label><br>
             
             <input type="checkbox" id="tollTag" name="tollTag" value="tolltag">
@@ -105,6 +108,9 @@ label {
 
             <input type="checkbox" id="roadsideAssistance" name="roadsideAssistance" value="roadsideassistance" style="margin-bottom: 20px">
             <label for="roadsideAssistance"></label>Roadside Assistance ($2.95/day)</label><br>
+          </div>
+
+          <div class="col">
 
             <label for="under25" style="font-weight: bold;">Under 25</label><br>
             <input type="radio" name="under25" id="noRadioBtn" value="no"> No 
@@ -112,11 +118,12 @@ label {
             
             <div class="mt-3">
                 <button type="button" id="totalCostBtn" class="btn btn-white" style="border-color: black;">Estimate Total Cost</button>
-            </div><br>
-        </div>
+            </div>
+            
+            </div>
+            
+            <br>
 
-            
-            
             <div style="text-align: center;">
                 <h6>Car Rental: </h6><h6 id="outputCarRental"></h6>
                 <h6>Options: </h6><h6 id="outputOptions"></h6>
