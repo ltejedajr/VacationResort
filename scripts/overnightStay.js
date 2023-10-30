@@ -47,17 +47,17 @@ function calculateCostClicked() {
 
     if (roomType == 'queenRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 5) { 
-            alert('The room you selected will not hold your party');
+            alert('Max Occupancy: 5');
             return;
         }
     } else if (roomType == 'kingRoom') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 2) { 
-            alert('The room you selected will not hold your party');
+            alert('Max Occupancy: 2');
             return; 
         }
     } else if (roomType == 'twoBdSuite') {
         if (Number(inputNumAdults) + Number(inputNumChildren) > 6) {
-            alert('The room you selected will not hold your party');
+            alert('Max Occupancy: 6');
             return;
         }
     }
